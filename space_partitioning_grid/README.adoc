@@ -1,0 +1,7 @@
+= Sparse Loose Grid Space Partitioning 
+
+An experiment showing a simple space partitioning structure.
+
+- Grid: simple / no level of detail. The grid's cells size must be tuned for the scale of objects/queries; it is suited for 2D with low scaling variations.
+- Loose: each cell covers twice its size from its center. This implies that objects can be defined by a center and an axis-aligned square radius footnote:[The radius of the circle inscribed in the axis-aligned square.] where the center defines which cell to use; an object is only bound to a single cell even between two cells.
+- Sparse: only cells containing objects exist.
