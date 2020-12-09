@@ -1,0 +1,9 @@
+= Quadtree
+
+An experiment to visualize/edit a quadtree of tiles/blocks.
+
+- Sparse: it merges identical children (compresses similar data).
+- Grow/shrink: it can grow or shrink from the root, thus it can theoretically covers an infinite area.
+- LOD: it has levels of details.
+
+NOTE: By adding the same loose property of the link:../space_partitioning_grid/[grid experiment] and a merge/split heuristic, it is suited for space partitioning of objects and queries of any sizes.

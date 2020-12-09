@@ -66,7 +66,7 @@ function love.update(dt)
   info:set("FPS: "..love.timer.getFPS().."\narea: "..(AREA*AREA*1e-6).." km²\ndisks: "..DISKS.."\ncells: "..partition.cells_count.."\nspeed: "..SPEED.." m/s\nscale: "..SCALE.." px/m\nactive disks: "..#objs.."\nx: "..math.floor(mx+0.5).."\ny: "..math.floor(my+0.5))
 end
 
-function love.draw(dt)
+function love.draw()
   local w, h = love.graphics.getDimensions()
   -- game
   love.graphics.push()
