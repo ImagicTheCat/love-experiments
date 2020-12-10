@@ -32,6 +32,7 @@ function love.update(dt)
     "pencil tile: "..(pencil_tile and "fill" or "empty"),
     "pensil size: "..pencil_size,
     "drawn nodes: "..last_drawn_nodes,
+    "GC memory: "..math.floor(collectgarbage("count")/1000).." MB",
     "",
     "[LMB] edit",
     "[RMB] move",
