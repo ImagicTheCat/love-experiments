@@ -1,0 +1,25 @@
+= Structure Destruction
+
+An experiment showing a simple component split detection algorithm for structure destruction, inspired by https://en.wikipedia.org/wiki/Connected-component_labeling[Connected-component labeling] and https://en.wikipedia.org/wiki/Flood_fill[Flood fill] algorithms.
+
+== Algorithm
+
+Summary: we have an undirected graph and we do a breadth first search of components, starting from removed nodes.
+
+* Some nodes are removed from the graph.
+* For each removed node, each neighbor is affected a unique label (which forms a group/component) and is pushed to the exploration queue.
+* At each iteration, we take the next node from the queue to spread its label/group/component to neighbor nodes.
+** If a neighbor is already labelled by the same component, there is nothing to do.
+** If a neighbor is already labelled by a different component, we merge the components.
+** Otherwise, we continue spreading the label/group/component by pushing each neighbor to the queue.
+
+At the end we have independent components.
+
+.The algorithm can be optimized/limited with rules, for example:
+- Removed nodes that are close to each other can be batched together instead of exploring multiple times the same area.
+- If we have a single component, we can stop iterating: nothing to split.
+- Because components are concurrently explored, we can limit the number of iterations (total / per component) and check which components are complete or incomplete. If we have complete and incomplete components, we can consider the incomplete components as _grounded_ and extract the complete components.
+
+TIP: In a huge voxel world where voxels are cut from it, we can limit the number of iterations and consider the world as the ensemble of incomplete components (thus it can create floating islands when cutting big chunks).
+
+NOTE: In combination with a sparse quadtree/octree for tiles/voxels, the exploration cost may be drastically reduced.
